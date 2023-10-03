@@ -1,30 +1,5 @@
 import './App.css';
-
-function filterNamesWithStartingM(names) {
-  return names.filter(name => name.startsWith('M'))
-}
-
-function squareRootArray(arr) {
-  return arr.map(number => Math.sqrt(number));
-}
-
-function sumArray(arr) {
-  return arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-}
-
-function sumTeachersAges(data) {
-  return data.reduce((sum, teacher) => sum + teacher.teacherAge, 0);
-}
-
-function sumActiveTeachersAges(data) {
-  const activeTeachers = data.filter(teacher => teacher.active);
-  return activeTeachers.reduce((sum, teacher) => sum + teacher.teacherAge, 0);
-}
-
-function sortStudentNames(data) {
-  const allStudents = data.flatMap(teacher => teacher.students.map(student => student.name));
-  return allStudents.sort((a, b) => a.localeCompare(b));
-}
+import * as utils from './utils.js'
 
 function App() {
   const students = ['John', 'Mark', 'Stephanie', 'Martha', 'Vlad'];
@@ -88,12 +63,12 @@ function App() {
         ]
     }
 ];
-  const sum = sumArray(numbers)
-  const filteredStudents = filterNamesWithStartingM(students)
-  const rootedNumbers = squareRootArray(numbers)
-  const sumTeacherAges = sumTeachersAges(data)
-  const sumActiveTeacherAges = sumActiveTeachersAges(data)
-  const sortedStudentNames = sortStudentNames(data)
+  const sum = utils.sumArray(numbers)
+  const filteredStudents = utils.filterNamesWithStartingM(students)
+  const rootedNumbers = utils.squareRootArray(numbers)
+  const sumTeacherAges = utils.sumTeachersAges(data)
+  const sumActiveTeacherAges = utils.sumActiveTeachersAges(data)
+  const sortedStudentNames = utils.sortStudentNames(data)
   return (    
     <div>
       <h1>Exercise number 1</h1>
