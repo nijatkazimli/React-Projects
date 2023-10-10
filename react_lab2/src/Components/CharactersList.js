@@ -10,7 +10,7 @@ function CharactersList({ peopleData }) {
         {peopleData.map((person, index) => {
           console.log(`Index: ${index}`);
           return (
-            <CharacterListItem number={index} person={person} />
+            <CharacterListItem key={index} number={index} person={person} />
           );
         })}
       </ul>
