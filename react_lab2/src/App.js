@@ -1,8 +1,8 @@
 import React from 'react';
-import SearchBar from './SearchBar';
-import CharactersList from './CharactersList';
+import SearchBar from './Components/SearchBar';
+import CharactersList from './Components/CharactersList';
 import { peopleData } from './data';
-import CharacterForm from './CharacterForm';
+import CharacterForm from './Components/CharacterForm';
 
 function App() {
   return (
