@@ -1,16 +1,20 @@
 import React from 'react';
-import SearchBar from './Components/SearchBar';
 import CharactersList from './Components/CharactersList';
 import { peopleData } from './data';
 import CharacterForm from './Components/CharacterForm';
+import SearchBar from './Components/SearchBar';
+import './App.css';
 
 function App() {
   return (
-    <div>
-      <h1>App Component</h1>
-      <SearchBar />
-      <CharactersList peopleData={peopleData} />
-      <CharacterForm />
+    <div className="app-container">
+      <header className="app-header">
+        <SearchBar />
+      </header>
+      <main className="app-main">
+        <CharactersList peopleData={peopleData} />
+        <CharacterForm />
+      </main>
     </div>
   );
 }
