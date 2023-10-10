@@ -2,7 +2,10 @@ import React from 'react';
 
 function CharacterListItem({ number, person }) {
   return (
-    <li>{number + 1}. {person.name}</li>
+    <li>
+      <p>{number + 1}. {person.name} {person.email}</p>
+      <img src={person.avatarUrl}></img>
+    </li>
   );
 }
 
