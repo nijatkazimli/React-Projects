@@ -8,7 +8,6 @@ function CharactersList({ peopleData }) {
       <h2>Characters List</h2>
       <ul className="character-list">
         {peopleData.map((person, index) => {
-          console.log(`Index: ${index}`);
           return (
             <CharacterListItem key={index} number={index} person={person} />
           );
