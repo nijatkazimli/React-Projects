@@ -1,8 +1,8 @@
 import React from 'react';
 
-function CharacterListItem({ person }) {
+function CharacterListItem({ number, person }) {
   return (
-    <li>{person.name}</li>
+    <li>{number + 1}. {person.name}</li>
   );
 }
 
