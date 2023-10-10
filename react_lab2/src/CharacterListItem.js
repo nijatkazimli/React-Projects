@@ -1,4 +1,3 @@
-// CharacterListItem.js
 import React from 'react';
 
 function CharacterListItem({ person }) {

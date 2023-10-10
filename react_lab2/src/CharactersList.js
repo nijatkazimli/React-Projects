@@ -1,4 +1,3 @@
-// CharactersList.js
 import React from 'react';
 import CharacterListItem from './CharacterListItem';
 

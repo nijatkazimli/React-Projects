@@ -1,4 +1,3 @@
-// CharacterForm.js
 import React from 'react';
 
 function CharacterForm() {
