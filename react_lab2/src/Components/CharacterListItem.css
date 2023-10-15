@@ -1,0 +1,43 @@
+.character-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    margin: 10px;
+  }
+  
+  .avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%; 
+    margin-right: 10px;
+  }
+  
+  .info {
+    flex-grow: 1;  
+  }
+
+  .buttons {
+    margin: 7px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message-button,
+  .delete-button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  
+  .message-button:hover,
+  .delete-button:hover {
+    background-color: #f0f0f0;
+  }
+
+
+  
