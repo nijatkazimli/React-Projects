@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchBar.css';
 
-function SearchBar() {
+function SearchBar({ onSearch }) {
   return (
     <div className="search-bar">
       <input
@@ -9,7 +9,7 @@ function SearchBar() {
         placeholder="Search..."
         className="search-input"
       />
-      <button className="search-button">Search</button>
+      <button className="search-button" onClick={ onSearch }>Search</button>
     </div>
   );
 }

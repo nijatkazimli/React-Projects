@@ -6,15 +6,24 @@ import SearchBar from './Components/SearchBar';
 import './App.css';
 
 function App() {
+  
+  function addCharacterHandler() {
+    console.log('Adding character');
+  }
+
+  function searchHandler() {
+    console.log('Search performed');
+  }
+
   return (
     <div className="app-container">
       <header className="app-header">
         <h1>Character Directory</h1>
-        <SearchBar />
+        <SearchBar onSearch={searchHandler}/>
       </header>
       <main className="app-main">
         <CharactersList peopleData={peopleData} />
-        <CharacterForm />
+        <CharacterForm onAddCharacter={addCharacterHandler}/>
       </main>
     </div>
   );
