@@ -4,17 +4,22 @@
     border: 1px solid #000000;
     border-radius: 15px;
     margin: 10px;
+    background-color: white;
   }
   
   .avatar {
     width: 70px;
     height: 70px;
+    margin-left: 10px;
+    background-color: rgb(196, 195, 195);
     border-radius: 50%; 
+    border: 1px solid #000000;
     margin-right: 10px;
   }
   
   .info {
-    flex-grow: 1;  
+    flex-grow: 1;
+    font-weight: 500;
   }
 
   .buttons {
