@@ -22,6 +22,10 @@ function CharacterForm({ onAddCharacter }) {
     clearForm();
   };
 
+  const isThereEmptyInput = () => {
+    return name.trim() === '' || email.trim() === '' || avatarUrl.trim() === '';
+  };
+
   return (
     <div className="character-form">
       <h2>Add Character</h2>
@@ -56,7 +60,11 @@ function CharacterForm({ onAddCharacter }) {
             onChange={(e) => setAvatarUrl(e.target.value)}
           />
         </div>
-        <button className="add-button" onClick={handleAddCharacter}>
+        <button
+          className="add-button"
+          onClick={handleAddCharacter}
+          disabled={isThereEmptyInput()}
+        >
           Add
         </button>
       </div>
