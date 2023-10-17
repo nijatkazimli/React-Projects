@@ -28,7 +28,7 @@
     flex-direction: column;
   }
   
-  .message-button,
+  .delete-button,
   .edit-button {
     padding: 5px 10px;
     border: 1px solid #ccc;
@@ -39,7 +39,7 @@
     margin-bottom: 5px;
   }
   
-  .message-button:hover,
+  .delete-button:hover,
   .edit-button:hover {
     background-color: #f0f0f0;
   }
