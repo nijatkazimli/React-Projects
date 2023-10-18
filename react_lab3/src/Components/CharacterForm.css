@@ -1,149 +1,59 @@
 .character-form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .add-form {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #000000;
-    border-radius: 15px;
-    padding: 20px;
-    background-color: #ffffff;
-  }
-  
-  .input-group {
-    margin-bottom: 10px;
-  }
-  
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .add-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
 
-  .add-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
 
-  .add-button:disabled:hover {
-    background-color: #ccc;
-  }
-  
-  .form-edit-button:hover {
-    background-color: #0056b3;
-  }
+.form,
+.add-form {
+  display: flex;
+  flex-direction: column;
+}
 
-  .form-edit-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+.input-group {
+  margin-bottom: 10px;
+}
 
-  .form-edit-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
 
-  .form-edit-button:disabled:hover {
-    background-color: #ccc;
-  }
-  
-  .form-edit-button:hover {
-    background-color: #0056b3;
-  }  
-  .character-form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .input-group {
-    margin-bottom: 10px;
-  }
-  
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .add-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    align-self: flex-end;
-    margin-top: 10px;
-    width: 80px;
-  }
+input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
-  .form-edit-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    align-self: flex-end;
-    margin-top: 10px;
-    width: 80px;
-  }  
-  
-  .add-button:hover {
-    background-color: #0056b3;
-  }
-    
+.add-button,
+.form-edit-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: flex-end;
+  margin-top: 10px;
+  width: 80px;
+}
+
+.add-button:hover,
+.form-edit-button:hover {
+  background-color: #0056b3;
+}
+
+.add-button:disabled,
+.form-edit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
