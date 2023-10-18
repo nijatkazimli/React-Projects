@@ -9,6 +9,11 @@ function App() {
   const [peopleDataState, setPeopleDataState] = useState(peopleData);
   const [filteredPeopleData, setFilteredPeopleData] = useState(peopleData);
   const [searchTerm, setSearchTerm] = useState('');
+  const [personToBeEdited, setPersonToBeEdited] = useState(null)
+
+  const updatePersonToBeEdited = (newPerson) => {
+    setPersonToBeEdited(newPerson);
+  };  
 
   function deleteCharacter(personToDelete) {
     const personIndex = peopleDataState.findIndex(person => person === personToDelete);
@@ -52,6 +57,20 @@ function App() {
     }
   }
 
+  function editCharacterHandlerList(characterToEdit) {
+    setPersonToBeEdited(characterToEdit)
+  }
+
+  function editCharacterHandlerForm(editedPerson) {
+    if (!editedPerson.name.toLowerCase().includes(searchTerm.toLowerCase())
+    &&  !editedPerson.email.toLowerCase().includes(searchTerm.toLowerCase())) {
+        let updatedFilteredData = [...filteredPeopleData]
+        updatedFilteredData = updatedFilteredData.filter(character => character !== editedPerson);
+        
+        setFilteredPeopleData(updatedFilteredData)
+    }    
+  }
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -59,8 +78,8 @@ function App() {
         <SearchBar onSearch={searchHandler} searchTerm={searchTerm} />
       </header>
       <main className="app-main">
-        <CharactersList peopleData={filteredPeopleData} onDeleteCharacter={deleteCharacter} />
-        <CharacterForm onAddCharacter={addCharacterHandler} />
+        <CharactersList peopleData={filteredPeopleData} onDeleteCharacter={deleteCharacter} onEditCharacter={editCharacterHandlerList} />
+        <CharacterForm onAddCharacter={addCharacterHandler} personToBeEdited={personToBeEdited} setPerson={updatePersonToBeEdited} onEditCharacterForm={editCharacterHandlerForm}/>
       </main>
     </div>
   );

@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CharacterForm.css';
 
-function CharacterForm({ onAddCharacter }) {
+function CharacterForm({ onAddCharacter, personToBeEdited, setPerson, onEditCharacterForm }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [avatarUrl, setAvatarUrl] = useState('');
+
+  useEffect(() => {
+    if (personToBeEdited) {
+      setName(personToBeEdited.name);
+      setEmail(personToBeEdited.email);
+      setAvatarUrl(personToBeEdited.avatarUrl);
+    } else {
+      clearForm();
+    }
+  }, [personToBeEdited]);
 
   const clearForm = () => {
     setName('');
@@ -22,13 +32,24 @@ function CharacterForm({ onAddCharacter }) {
     clearForm();
   };
 
+  const handleEditCharacter = () => {
+    if (personToBeEdited) {
+      personToBeEdited.name = name;
+      personToBeEdited.email = email;
+      personToBeEdited.avatarUrl = avatarUrl;
+      onEditCharacterForm(personToBeEdited)
+      setPerson(null);
+      clearForm();
+    }
+  };
+
   const isThereEmptyInput = () => {
     return name.trim() === '' || email.trim() === '' || avatarUrl.trim() === '';
   };
 
   return (
     <div className="character-form">
-      <h2>Add Character</h2>
+      <h2>{personToBeEdited ? 'Edit Character' : 'Add Character'}</h2>
       <div className="add-form">
         <div className="input-group">
           <label htmlFor="name">Name</label>
@@ -60,13 +81,23 @@ function CharacterForm({ onAddCharacter }) {
             onChange={(e) => setAvatarUrl(e.target.value)}
           />
         </div>
-        <button
-          className="add-button"
-          onClick={handleAddCharacter}
-          disabled={isThereEmptyInput()}
-        >
-          Add
-        </button>
+        {personToBeEdited ? (
+          <button 
+            className="form-edit-button" 
+            onClick={handleEditCharacter}
+            disabled={isThereEmptyInput()}
+            >
+            Edit
+          </button>
+        ) : (
+          <button
+            className="add-button"
+            onClick={handleAddCharacter}
+            disabled={isThereEmptyInput()}
+          >
+            Add
+          </button>
+        )}
       </div>
     </div>
   );

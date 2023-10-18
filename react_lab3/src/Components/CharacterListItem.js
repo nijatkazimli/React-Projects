@@ -1,10 +1,14 @@
 import React from 'react';
 import './CharacterListItem.css';
 
-function CharacterListItem({ number, person, onDeleteCharacter }) {
+function CharacterListItem({ number, person, onDeleteCharacter, onEditCharacter }) {
   const handleDeleteClick = () => {
     onDeleteCharacter(person);
   };
+
+  const handleEditClick = () => {
+    onEditCharacter(person);
+  }
 
   return (
     <li>
@@ -15,7 +19,7 @@ function CharacterListItem({ number, person, onDeleteCharacter }) {
           <p>{person.email}</p>
         </div>
         <div className="buttons">
-          <button className="edit-button">Edit</button>
+          <button className="edit-button" onClick={handleEditClick}>Edit</button>
           <button className="delete-button" onClick={handleDeleteClick}>Delete</button>
         </div>
       </div>

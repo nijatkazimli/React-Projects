@@ -55,9 +55,32 @@
     background-color: #ccc;
   }
   
-  .add-button:hover {
+  .form-edit-button:hover {
     background-color: #0056b3;
   }
+
+  .form-edit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .form-edit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .form-edit-button:disabled:hover {
+    background-color: #ccc;
+  }
+  
+  .form-edit-button:hover {
+    background-color: #0056b3;
+  }  
   .character-form {
     background-color: #f9f9f9;
     padding: 20px;
@@ -105,6 +128,20 @@
     margin-top: 10px;
     width: 80px;
   }
+
+  .form-edit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+    margin-top: 10px;
+    width: 80px;
+  }  
   
   .add-button:hover {
     background-color: #0056b3;
