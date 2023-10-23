@@ -14,11 +14,11 @@ Get ready for a thrilling ride through the React cosmos. In this course, I'll ma
 
 ## 🌟 What's In Store
 
-Expect some epic battles with bugs, but don't worry, we've got a debugging sword ready! Our Jedi masters (Paweł Gawędzki, Krzysztof Łapiński, Michał Klecha, Łukasz Magiera) are here to guide me on my quest to become a React wizard.
+Expect some epic battles with bugs, but don't worry, we've got a debugging sword ready! Our Jedi masters (**Paweł Gawędzki, Krzysztof Łapiński, Michał Klecha, Łukasz Magiera**) are here to guide me on my quest to become a React wizard.
 
 ## 👨‍💻 My Mission
 
-My mission, should I choose to accept it, is to build a React app that could make Tony Stark jealous! And I should remember, when in doubt, console.log() is your superhero sidekick.
+My mission, should I choose to accept it, is to build a React app that could make Tony Stark jealous! And I should remember, when in doubt, console.log() is my superhero sidekick.
 
 ## 🎉 Let's Get Started
 
