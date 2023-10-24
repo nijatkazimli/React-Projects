@@ -1,6 +1,7 @@
 import React from 'react';
 
 const SummaryStep = ({ formData }) => {
+    // already done
   return (
     <div>
       <h2>Summary Step</h2>
