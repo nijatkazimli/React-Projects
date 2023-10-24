@@ -28,6 +28,11 @@ const CustomerForm = () => {
     return emailRegex.test(email);
   };
 
+  const validateZip = (zip) => {
+    const emailRegex = /^\d{2}-\d{3}$/;
+    return emailRegex.test(zip);
+  };  
+
   const handleNextStep = () => {
     if (step === 1) {
       const { firstname, lastname, email } = formData;
@@ -41,6 +46,38 @@ const CustomerForm = () => {
       }
       if (!email || !validateEmail(email)) {
         errors.email = 'Email is required and must be valid';
+      }
+
+      if (Object.keys(errors).length === 0) {
+        setValidationErrors({});
+        setStep(step + 1);
+      } else {
+        setValidationErrors(errors);
+      }
+    } else if (step === 2) {
+      const {
+        delivery: { street, zip, city },
+        invoice: { street: invoiceStreet, zip: invoiceZip, city: invoiceCity },
+      } = formData;
+      const errors = {};
+
+      if (!street) {
+        errors.delivery = { ...errors.delivery, street: 'Street is required' };
+      }
+      if (!zip || !validateZip(zip)) {
+        errors.delivery = { ...errors.delivery, zip: 'Zip code is required and must have a valid format (DD-DDD)' };
+      }
+      if (!city) {
+        errors.delivery = { ...errors.delivery, city: 'City is required' };
+      }
+      if (!invoiceStreet) {
+        errors.invoice = { ...errors.invoice, street: 'Street is required' };
+      }
+      if (!invoiceZip || !validateZip(invoiceZip)) {
+        errors.invoice = { ...errors.invoice, zip: 'Zip code is required and must have a valid format (DD-DDD)' };
+      }
+      if (!invoiceCity) {
+        errors.invoice = { ...errors.invoice, city: 'City is required' };
       }
 
       if (Object.keys(errors).length === 0) {
@@ -70,6 +107,7 @@ const CustomerForm = () => {
         return (
           <AddressStep
             formData={formData}
+            validationErrors={validationErrors}
             handleChange={(field, value, section) =>
               setFormData({
                 ...formData,
