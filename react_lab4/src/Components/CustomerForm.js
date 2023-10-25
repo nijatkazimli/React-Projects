@@ -23,6 +23,28 @@ const CustomerForm = () => {
   });
   const [validationErrors, setValidationErrors] = useState({});
 
+  const copyAddress = (shouldCopy) => { // really needed this function not to call useStates 3 times concurrently.
+    if (shouldCopy) {                   // Asynchronous nature of them made everything complicated.
+      const {
+        delivery: { street: deliveryStreet, zip: deliveryZip, city: deliveryCity }
+      } = formData;
+      const invoice = {
+        street: deliveryStreet,
+        zip: deliveryZip,
+        city: deliveryCity,
+      };
+      setFormData({ ...formData, invoice });
+    } else {
+      const invoice = {
+        street: '',
+        zip: '',
+        city: '',
+      };
+      setFormData({ ...formData, invoice});
+    }
+  }
+  
+
   const validateEmail = (email) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     return emailRegex.test(email);
@@ -114,6 +136,7 @@ const CustomerForm = () => {
                 [section]: { ...formData[section], [field]: value },
               })
             }
+            setSameAddress={(value => copyAddress(value))}
           />
         );
       case 3:
