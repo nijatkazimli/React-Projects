@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SummaryStep = ({ formData }) => {
+const SummaryStep = ({ formData, handlePreviousStep }) => {
     // already done
   return (
     <div>
@@ -16,6 +16,10 @@ const SummaryStep = ({ formData }) => {
       <div>
         <h3>Invoice Address:</h3>
         <p>{formData.invoice.street}, {formData.invoice.zip}, {formData.invoice.city}</p>
+      </div>
+      <div>
+        <button onClick={() => handlePreviousStep(1)}>Back to Step 1</button>
+        <button onClick={() => handlePreviousStep(2)}>Back to Step 2</button>
       </div>
     </div>
   );

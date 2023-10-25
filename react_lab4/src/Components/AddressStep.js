@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const AddressStep = ({ formData, handleChange, setSameAddress, validationErrors }) => {
-    const [invoiceSameAsDelivery, setInvoiceSameAsDelivery] = useState(false);
-
+const AddressStep = ({ formData, handleChange, invoiceSameAsDelivery, setInvoiceSameAsDelivery, setSameAddress, validationErrors }) => {
     const handleSameAddressChange = (e) => {
         const isChecked = e.target.checked;
         setInvoiceSameAsDelivery(isChecked);
@@ -42,16 +40,17 @@ const AddressStep = ({ formData, handleChange, setSameAddress, validationErrors 
                     <p className="error">{validationErrors.delivery.city}</p>
                 )}
             </div>
+            <label>
+                <input
+                type="checkbox"
+                checked={invoiceSameAsDelivery}
+                onChange={handleSameAddressChange}
+                />
+                Same as Delivery Address
+            </label>            
             {!invoiceSameAsDelivery && (
                 <div>
                     <h3>Invoice Address</h3>
-                    <label>
-                        <input
-                            type="checkbox"
-                            onChange={handleSameAddressChange}
-                        />
-                        Same as Delivery Address
-                    </label>
                     <input
                         type="text"
                         placeholder="Street"

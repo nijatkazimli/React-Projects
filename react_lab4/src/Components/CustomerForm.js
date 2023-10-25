@@ -22,6 +22,8 @@ const CustomerForm = () => {
     },
   });
   const [validationErrors, setValidationErrors] = useState({});
+  const [invoiceSameAsDelivery, setInvoiceSameAsDelivery] = useState(false);  // had to add because I would like to know the state of
+                                                                              // it when going back to step 2.
 
   const copyAddress = (shouldCopy) => { // really needed this function not to call useStates 3 times concurrently.
     if (shouldCopy) {                   // Asynchronous nature of them made everything complicated.
@@ -113,6 +115,10 @@ const CustomerForm = () => {
     }
   };
 
+  const handlePreviousStep = (stepToGoBack) => {
+    setStep(stepToGoBack);
+  };
+
   const renderStep = () => {
     switch (step) {
       case 1:
@@ -137,15 +143,17 @@ const CustomerForm = () => {
               })
             }
             setSameAddress={(value => copyAddress(value))}
+            invoiceSameAsDelivery={invoiceSameAsDelivery}
+            setInvoiceSameAsDelivery={(value => setInvoiceSameAsDelivery(value))}
           />
         );
       case 3:
-        return <SummaryStep formData={formData} />;
+        return <SummaryStep formData={formData} handlePreviousStep={handlePreviousStep}/>;
       default:
         return null;
     }
   };
-
+  
   return (
     <div className="customer-form">
       {renderStep()}
