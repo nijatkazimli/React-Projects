@@ -18,8 +18,8 @@ const SummaryStep = ({ formData, handlePreviousStep }) => {
         <p>{formData.invoice.street}, {formData.invoice.zip}, {formData.invoice.city}</p>
       </div>
       <div>
-        <button onClick={() => handlePreviousStep(1)}>Back to Step 1</button>
-        <button onClick={() => handlePreviousStep(2)}>Back to Step 2</button>
+        <button className = "previous-button" onClick={() => handlePreviousStep(1)}>Back to Step 1</button>
+        <button className = "previous-button" onClick={() => handlePreviousStep(2)}>Back to Step 2</button>
       </div>
     </div>
   );

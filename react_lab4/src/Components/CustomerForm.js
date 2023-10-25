@@ -110,8 +110,6 @@ const CustomerForm = () => {
       } else {
         setValidationErrors(errors);
       }
-    } else {
-      setStep(step + 1);
     }
   };
 
@@ -156,8 +154,14 @@ const CustomerForm = () => {
   
   return (
     <div className="customer-form">
-      {renderStep()}
-      {step < 3 && <button className="next-button" onClick={handleNextStep}>Next</button>}
+      <div className="form-container">
+        {renderStep()}
+        {step < 3 && (
+          <button className="next-button" onClick={handleNextStep}>
+            Next
+          </button>
+        )}
+      </div>
     </div>
   );
 };
