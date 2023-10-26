@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AddressStep = ({ formData, handleChange, invoiceSameAsDelivery, setInvoiceSameAsDelivery, validationErrors }) => {
-    const toggleHandleSameAddress = (e) => {
+    const toggleSameAddress = (e) => {
         const isChecked = e.target.checked;
         setInvoiceSameAsDelivery(isChecked);
     };
@@ -43,7 +43,7 @@ const AddressStep = ({ formData, handleChange, invoiceSameAsDelivery, setInvoice
                 <input
                 type="checkbox"
                 checked={invoiceSameAsDelivery}
-                onChange={toggleHandleSameAddress}
+                onChange={toggleSameAddress}
                 />
                 Same as Delivery Address
             </label>            
