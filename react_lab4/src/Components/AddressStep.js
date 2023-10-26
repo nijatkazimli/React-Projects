@@ -1,10 +1,9 @@
 import React from 'react';
 
-const AddressStep = ({ formData, handleChange, invoiceSameAsDelivery, setInvoiceSameAsDelivery, setSameAddress, validationErrors }) => {
+const AddressStep = ({ formData, handleChange, invoiceSameAsDelivery, setInvoiceSameAsDelivery, validationErrors }) => {
     const handleSameAddressChange = (e) => {
         const isChecked = e.target.checked;
         setInvoiceSameAsDelivery(isChecked);
-        setSameAddress(isChecked);
     };
 
     return (

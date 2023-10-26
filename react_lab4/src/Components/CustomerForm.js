@@ -24,27 +24,20 @@ const CustomerForm = () => {
   const [validationErrors, setValidationErrors] = useState({});
   const [invoiceSameAsDelivery, setInvoiceSameAsDelivery] = useState(false);  // had to add because I would like to know the state of
                                                                               // it when going back to step 2.
-
-  const copyAddress = (shouldCopy) => { // really needed this function not to call useStates 3 times concurrently.
-    if (shouldCopy) {                   // Asynchronous nature of them made everything complicated.
-      const {
-        delivery: { street: deliveryStreet, zip: deliveryZip, city: deliveryCity }
-      } = formData;
-      const invoice = {
-        street: deliveryStreet,
-        zip: deliveryZip,
-        city: deliveryCity,
-      };
-      setFormData({ ...formData, invoice });
-    } else {
-      const invoice = {
-        street: '',
-        zip: '',
-        city: '',
-      };
-      setFormData({ ...formData, invoice});
+  
+  const handleAddressChange = (field, value, section) => {  // really needed this function not to call useStates 3 times concurrently.
+    const updatedFormData = { ...formData };                // Asynchronous nature of them made everything complicated.
+    if (section === 'delivery') {
+      updatedFormData.delivery = { ...updatedFormData.delivery, [field]: value };
     }
-  }
+    if (section === 'invoice') {
+      updatedFormData.invoice = { ...updatedFormData.invoice, [field]: value };
+    }
+    if (invoiceSameAsDelivery) {
+      updatedFormData.invoice = { ...updatedFormData.delivery, [field]: value };
+    }
+    setFormData(updatedFormData);
+  };
   
 
   const validateEmail = (email) => {
@@ -134,13 +127,7 @@ const CustomerForm = () => {
           <AddressStep
             formData={formData}
             validationErrors={validationErrors}
-            handleChange={(field, value, section) =>
-              setFormData({
-                ...formData,
-                [section]: { ...formData[section], [field]: value },
-              })
-            }
-            setSameAddress={(value => copyAddress(value))}
+            handleChange={handleAddressChange}
             invoiceSameAsDelivery={invoiceSameAsDelivery}
             setInvoiceSameAsDelivery={(value => setInvoiceSameAsDelivery(value))}
           />
