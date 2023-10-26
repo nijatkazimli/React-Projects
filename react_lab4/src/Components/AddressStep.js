@@ -1,9 +1,9 @@
 import React from 'react';
 
-const AddressStep = ({ formData, handleChange, invoiceSameAsDelivery, setInvoiceSameAsDelivery, validationErrors }) => {
+const AddressStep = ({ formData, handleChange, invoiceSameAsDelivery, handleToggleChange, validationErrors }) => {
     const toggleSameAddress = (e) => {
         const isChecked = e.target.checked;
-        setInvoiceSameAsDelivery(isChecked);
+        handleToggleChange(isChecked);
     };
 
     return (

@@ -39,6 +39,23 @@ const CustomerForm = () => {
     setFormData(updatedFormData);
   };
   
+  const clearInvoice = () => {
+    const updatedFormData = { ...formData };
+    const clearedInvoice = {
+      street: '',
+      zip: '',
+      city: '',
+    }
+    updatedFormData.invoice = clearedInvoice;
+    setFormData(updatedFormData);
+  }
+
+  const handleToggleChange = (isChecked) => {
+    setInvoiceSameAsDelivery(isChecked);
+    if ( !isChecked ) {
+      clearInvoice();
+    }
+  }
 
   const validateEmail = (email) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -129,7 +146,7 @@ const CustomerForm = () => {
             validationErrors={validationErrors}
             handleChange={handleAddressChange}
             invoiceSameAsDelivery={invoiceSameAsDelivery}
-            setInvoiceSameAsDelivery={(value => setInvoiceSameAsDelivery(value))}
+            handleToggleChange={handleToggleChange}
           />
         );
       case 3:
