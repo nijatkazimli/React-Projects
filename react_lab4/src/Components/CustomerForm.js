@@ -68,60 +68,71 @@ const CustomerForm = () => {
   };  
 
   const handleNextStep = () => {
-    if (step === 1) {
-      const { firstname, lastname, email } = formData;
-      const errors = {};
-
-      if (!firstname) {
-        errors.firstname = 'First name is required';
-      }
-      if (!lastname) {
-        errors.lastname = 'Last name is required';
-      }
-      if (!email || !validateEmail(email)) {
-        errors.email = 'Email is required and must be valid';
-      }
-
-      if (Object.keys(errors).length === 0) {
-        setValidationErrors({});
-        setStep(step + 1);
-      } else {
-        setValidationErrors(errors);
-      }
-    } else if (step === 2) {
-      const {
-        delivery: { street, zip, city },
-        invoice: { street: invoiceStreet, zip: invoiceZip, city: invoiceCity },
-      } = formData;
-      const errors = {};
-
-      if (!street) {
-        errors.delivery = { ...errors.delivery, street: 'Street is required' };
-      }
-      if (!zip || !validateZip(zip)) {
-        errors.delivery = { ...errors.delivery, zip: 'Zip code is required and must have a valid format (DD-DDD)' };
-      }
-      if (!city) {
-        errors.delivery = { ...errors.delivery, city: 'City is required' };
-      }
-      if (!invoiceStreet) {
-        errors.invoice = { ...errors.invoice, street: 'Street is required' };
-      }
-      if (!invoiceZip || !validateZip(invoiceZip)) {
-        errors.invoice = { ...errors.invoice, zip: 'Zip code is required and must have a valid format (DD-DDD)' };
-      }
-      if (!invoiceCity) {
-        errors.invoice = { ...errors.invoice, city: 'City is required' };
-      }
-
-      if (Object.keys(errors).length === 0) {
-        setValidationErrors({});
-        setStep(step + 1);
-      } else {
-        setValidationErrors(errors);
-      }
+    const isStep1Valid = step === 1 ? validateStep1() : true;
+    const isStep2Valid = step === 2 ? validateStep2() : true;
+  
+    if (isStep1Valid && isStep2Valid) {
+      setValidationErrors({});
+      setStep(step + 1);
     }
   };
+  
+  const validateStep1 = () => {
+    const { firstname, lastname, email } = formData;
+    const errors = {};
+  
+    if (!firstname) {
+      errors.firstname = 'First name is required';
+    }
+    if (!lastname) {
+      errors.lastname = 'Last name is required';
+    }
+    if (!email || !validateEmail(email)) {
+      errors.email = 'Email is required and must be valid';
+    }
+  
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      return false;
+    }
+  
+    return true;
+  };
+  
+  const validateStep2 = () => {
+    const {
+      delivery: { street, zip, city },
+      invoice: { street: invoiceStreet, zip: invoiceZip, city: invoiceCity },
+    } = formData;
+    const errors = {};
+  
+    if (!street) {
+      errors.delivery = { ...errors.delivery, street: 'Street is required' };
+    }
+    if (!zip || !validateZip(zip)) {
+      errors.delivery = { ...errors.delivery, zip: 'Zip code is required and must have a valid format (DD-DDD)' };
+    }
+    if (!city) {
+      errors.delivery = { ...errors.delivery, city: 'City is required' };
+    }
+    if (!invoiceStreet) {
+      errors.invoice = { ...errors.invoice, street: 'Street is required' };
+    }
+    if (!invoiceZip || !validateZip(invoiceZip)) {
+      errors.invoice = { ...errors.invoice, zip: 'Zip code is required and must have a valid format (DD-DDD)' };
+    }
+    if (!invoiceCity) {
+      errors.invoice = { ...errors.invoice, city: 'City is required' };
+    }
+  
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      return false;
+    }
+  
+    return true;
+  };
+  
 
   const handlePreviousStep = (stepToGoBack) => {
     setStep(stepToGoBack);
