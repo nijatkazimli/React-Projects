@@ -4,7 +4,7 @@ import productsData from "../data";
 const initialState = {
 	products: productsData,
 	likedProducts: [],
-	productsInBasket: [],
+	productsInBasket: {},
   };
 
 const rootReducer = (state = initialState, action) => {
@@ -21,13 +21,15 @@ const rootReducer = (state = initialState, action) => {
 			};
 		case ADD_TO_BASKET:
 			const productIdToAdd = action.payload;
-			const isAdded = state.productsInBasket.includes(productIdToAdd);
-			const productsInBasket = isAdded
-				? state.productsInBasket.filter((id) => id !== productId)
-				: [...state.productsInBasket, productIdToAdd];
+			const updatedBasket = { ...state.productsInBasket };
+			if (updatedBasket[productIdToAdd]) {
+				updatedBasket[productIdToAdd] += 1;
+			} else {
+				updatedBasket[productIdToAdd] = 1;
+			}
 			return {
 				...state,
-				productsInBasket,
+				productsInBasket: updatedBasket,
 			};
 		default:
 			return state;

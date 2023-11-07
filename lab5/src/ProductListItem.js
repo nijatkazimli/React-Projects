@@ -6,7 +6,7 @@ const ProductListItem = ({ product }) => {
 	const addedProducts = useSelector((state) => state.productsInBasket);
 	const dispatch = useDispatch();
 	const isLiked = likedProducts.includes(product.id);
-	const isAdded = addedProducts.includes(product.id);
+	const quantityInBasket = addedProducts[product.id] || 0;	
 
 	const handleAddToBasket = (productId) => {
 		dispatch(addToBasket(productId));
@@ -30,7 +30,7 @@ const ProductListItem = ({ product }) => {
 				onClick={() => handleAddToBasket(product.id)}
 			>
 				<i className={`fas fa-cart-plus`} style={{ color: "blue" }}></i>
-				{isAdded && <span>(1)</span>}
+				{quantityInBasket > 0 && <span>({quantityInBasket})</span>}
 			</span>
 		</li>
 	);

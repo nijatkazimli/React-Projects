@@ -13,18 +13,19 @@ const Basket = (props) => {
     "pl-PL": "Twój koszyk jest pusty.",
   };
 
-  const hasItemsInBasket = basketProducts.length > 0;
+  const hasItemsInBasket = Object.keys(basketProducts).length > 0;
 
   return (
     <div className="box mr-5 ml-5">
       <h2 className="title">Basket</h2>
       {hasItemsInBasket ? (
         <ul>
-          {basketProducts.map((productId) => {
-            const product = productsData.find((p) => p.id === productId);
+          {Object.keys(basketProducts).map((productId) => {
+			const product = productsData.find((p) => p.id === Number(productId));
+            const quantityInBasket = basketProducts[productId];
             return (
               <li key={productId}>
-                {product.title}
+                {product.title} ({quantityInBasket})
               </li>
             );
           })}
