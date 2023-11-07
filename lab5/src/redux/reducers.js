@@ -1,4 +1,4 @@
-import { TOGGLE_LIKED, ADD_TO_BASKET } from "./actions";
+import { TOGGLE_LIKED, ADD_TO_BASKET, REMOVE_FROM_BASKET } from "./actions";
 import productsData from "../data";
 
 const initialState = {
@@ -30,6 +30,19 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				productsInBasket: updatedBasket,
+			};
+		case REMOVE_FROM_BASKET:
+			const productIdToRemove = action.payload;
+			const updatedBasketAfterRemove = { ...state.productsInBasket };
+			if (updatedBasketAfterRemove[productIdToRemove] > 0) {
+				updatedBasketAfterRemove[productIdToRemove] -= 1;
+				if (updatedBasketAfterRemove[productIdToRemove] === 0) {
+					delete updatedBasketAfterRemove[productIdToRemove];
+				}
+			}
+			return {
+				...state,
+				productsInBasket: updatedBasketAfterRemove,
 			};
 		default:
 			return state;
