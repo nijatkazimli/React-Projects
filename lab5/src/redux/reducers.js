@@ -5,7 +5,7 @@ const initialState = {
 	products: productsData,
 	likedProducts: [],
 	productsInBasket: {},
-  };
+};
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
