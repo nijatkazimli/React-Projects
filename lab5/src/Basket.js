@@ -32,7 +32,7 @@ const Basket = (props) => {
       {hasItemsInBasket ? (
         <ul>
           {Object.keys(basketProducts).map((productId) => {
-			const product = productsData.find((p) => p.id === Number(productId));
+			      const product = productsData.find((p) => p.id === Number(productId));
             const quantityInBasket = basketProducts[productId];
             return (
               <li key={productId}>
