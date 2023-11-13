@@ -4,6 +4,7 @@ import HomePage from './Components/HomePage';
 import AboutPage from './Components/AboutPage';
 import Error404Page from './Components/Error404Page';
 import Layout from './Components/Layout';
+import CarsPage from './Components/CarsPage';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: 'cars',
+        element: <CarsPage />,
       },
       {
         path: 'about',

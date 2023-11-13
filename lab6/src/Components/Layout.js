@@ -14,7 +14,18 @@ const Layout = () => {
                     Home Page
                 </NavLink>
                 <NavLink
+                    to="/cars"
+                    className={({ isActive }) => 
+                    isActive ? "active" : ""
+                    }                    
+                >
+                    Cars
+                </NavLink>                
+                <NavLink
                     to="/about"
+                    className={({ isActive }) => 
+                    isActive ? "active" : ""
+                    }                    
                 >
                     About
                 </NavLink>
