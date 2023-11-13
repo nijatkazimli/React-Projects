@@ -1,0 +1,10 @@
+.active {
+    color: red;
+    font-weight: bold;
+}
+
+.nav-container {
+    display: flex;
+    gap: 10px;
+    margin-left: 5px;
+}
