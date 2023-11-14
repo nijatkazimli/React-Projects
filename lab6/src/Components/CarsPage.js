@@ -1,13 +1,15 @@
-import carData from '../cars.json'
+import { Link, Outlet } from "react-router-dom";
 
-const CarsPage = () => {
+const CarsPage = ({ cars }) => {
     return (
         <div>
             <ol>
-                {carData.map((car) => (
+                {cars.map((car) => (
                     <li key={car.id}>{car.name}</li>
                 ))}
             </ol>
+            <Link to="/cars/new">Add new</Link>
+            <Outlet />
         </div>
     )
 }

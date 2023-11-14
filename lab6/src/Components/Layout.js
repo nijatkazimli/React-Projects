@@ -20,7 +20,7 @@ const Layout = () => {
                     }                    
                 >
                     Cars
-                </NavLink>                
+                </NavLink>
                 <NavLink
                     to="/about"
                     className={({ isActive }) => 
