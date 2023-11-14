@@ -1,0 +1,23 @@
+.car-list {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.list-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-button {
+    margin-top: 10px;
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
