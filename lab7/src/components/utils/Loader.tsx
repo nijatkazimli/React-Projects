@@ -8,11 +8,10 @@ interface LoaderInnerProps {
 export declare type LoaderProps = React.PropsWithChildren<LoaderInnerProps>;
 
 const Loader: React.FC<LoaderProps> = (props: LoaderProps) => {
-    return props.loading ? (
-        <>{props.label ? `${props.label}...` : 'Loading...'}</>
-    ) : (
-        <>{props.children}</>
-    );
-};
+
+    return (
+        <></>
+    )
+}
 
 export default Loader;
