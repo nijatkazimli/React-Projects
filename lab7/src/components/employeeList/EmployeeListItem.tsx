@@ -8,7 +8,9 @@ export interface EmployeeListItemProps {
 
 const EmployeeListItem: React.FC<EmployeeListItemProps> = (props: EmployeeListItemProps) => {
     return (
-        <></>
+        <>
+            <p>{props.employee.name}</p>
+        </>
     );
 }
 
