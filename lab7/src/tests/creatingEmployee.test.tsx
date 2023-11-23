@@ -1,3 +1,5 @@
+// noinspection DuplicatedCode
+
 import {fireEvent, render, screen} from "@testing-library/react";
 import AddEmployeeFormContainer from "../components/employeeList/addEmployeeForm/AddEmployeeFormContainer";
 import React from "react";
@@ -110,7 +112,7 @@ describe('AddEmployeeFormContainer error handling test', () => {
 
     test('AddEmployeeFormContainer should log the error status code on error', async () => {
         changeServerToThrowError();
-        expect(console.error.mock.calls.length).toBe(0);
+        expect((console.error as any).mock.calls.length).toBe(0);
         render(<AddEmployeeFormContainer updateList={noAction}/>);
 
         const button = screen.getByRole('button');
@@ -121,9 +123,9 @@ describe('AddEmployeeFormContainer error handling test', () => {
         fireEvent.click(screen.getByText('Save'));
 
         expect(await screen.findByText("Save")).toBeTruthy();
-        expect(console.error.mock.calls.length).toBe(1);
-        expect(console.error.mock.calls[0][0]).toContain("Error");
+        expect((console.error as any).mock.calls.length).toBe(1);
+        expect((console.error as any).mock.calls[0][0]).toContain("Error");
 
-        expect(console.error.mock.calls[0][0]).toContain("500");
+        expect((console.error as any).mock.calls[0][0]).toContain("500");
     });
 });

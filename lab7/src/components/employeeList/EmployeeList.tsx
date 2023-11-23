@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmployeeList = () => {
+const EmployeeList: React.FC = () => {
     return (
         <></>
     );

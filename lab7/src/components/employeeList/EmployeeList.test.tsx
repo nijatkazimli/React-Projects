@@ -5,6 +5,7 @@ import {render, screen} from "@testing-library/react";
 import EmployeeList from "./EmployeeList";
 import {setupServer} from "msw/node";
 import {rest} from "msw";
+import {EmployeeListItemProps} from "./EmployeeListItem";
 
 /*
 getBy - finds or throws error - for standard use
@@ -45,7 +46,7 @@ afterAll(() => server.close());
 
 //region module mocks
 jest.mock("./EmployeeListItem", () => {
-    return function EmployeeListItem(props) {
+    return function EmployeeListItem(props: EmployeeListItemProps) {
         return (
             <div>
                 Mocked employee: {props.employee.id}. <span>{props.employee.name}</span>
@@ -156,7 +157,7 @@ describe('EmployeeList error handling test', () => {
 
     test('EmployeeList should log the error status code on error', async () => {
         changeServerToThrowError();
-        expect(console.error.mock.calls.length).toBe(0);
+        expect((console.error as any).mock.calls.length).toBe(0);
         const {container} = render(<EmployeeList/>);
 
         expect(await screen.findByText("Employee list")).toBeTruthy();
@@ -170,9 +171,9 @@ describe('EmployeeList error handling test', () => {
       </button>
     </div>
   `)
-        expect(console.error.mock.calls.length).toBe(1);
-        expect(console.error.mock.calls[0][0]).toContain("Error");
+        expect((console.error as any).mock.calls.length).toBe(1);
+        expect((console.error as any).mock.calls[0][0]).toContain("Error");
 
-        expect(console.error.mock.calls[0][0]).toContain("500");
+        expect((console.error as any).mock.calls[0][0]).toContain("500");
     });
 });

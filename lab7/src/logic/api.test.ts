@@ -71,9 +71,9 @@ describe('employees fetching tests', () => {
             expect(true).toBeFalsy();
         }
         catch (e){
-            expect(e.status).toBe(500);
-            expect(e.ok).toBeFalsy();
-            expect(e.statusText).toBe('Internal Server Error');
+            expect((e as Response).status).toBe(500);
+            expect((e as Response).ok).toBeFalsy();
+            expect((e as Response).statusText).toBe('Internal Server Error');
         }
     })
 })
