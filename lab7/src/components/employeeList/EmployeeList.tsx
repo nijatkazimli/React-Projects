@@ -3,6 +3,8 @@ import { CustomError, getEmployees } from '../../logic/api';
 import Loader from '../utils/Loader';
 import EmployeeListItem from './EmployeeListItem'; // Import the EmployeeListItem component
 import { Employee } from '../../model/Employee';
+import AddEmployeeForm from './addEmployeeForm/AddEmployeeForm';
+import AddEmployeeFormContainer from './addEmployeeForm/AddEmployeeFormContainer';
 
 const EmployeeList: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -36,7 +38,7 @@ const EmployeeList: React.FC = () => {
       ) : (
         <>
           <h1>Employee list</h1>
-          <button>Add employee</button>
+          <AddEmployeeFormContainer updateList={() => null}/>
           {employees.map((employee) => (
             <EmployeeListItem key={employee.id} employee={employee} updateList={() => {}} />
           ))}
