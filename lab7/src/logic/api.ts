@@ -53,4 +53,22 @@ export const addEmployee = async (employee: Employee) => {
 }
 
 export const deleteEmployee = async (employeeId: Key) => {
-}
+  try {
+      const response = await fetch(`${BASE_URL}/employees/${employeeId}`, {
+          method: 'DELETE',
+      });
+
+      if (response.ok) {
+          const data = await response.json();
+          return data;
+      } else {
+          const error: CustomError = new Error(`HTTP error! Status: ${response.status}`);
+          error.status = 500;
+          error.statusText = 'Internal Server Error';
+          throw error;
+      }
+  } catch (error) {
+      const customError: CustomError = error as CustomError;
+      throw customError;
+  }
+};

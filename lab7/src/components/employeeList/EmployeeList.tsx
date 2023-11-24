@@ -7,7 +7,6 @@ import AddEmployeeFormContainer from './addEmployeeForm/AddEmployeeFormContainer
 
 const EmployeeList: React.FC = () => {
   const [loading, setLoading] = useState(true);
-  const [loaderLabel, setLoaderLabel] = useState<string>();
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [error, setError] = useState<CustomError | null>(null);
 
@@ -34,7 +33,7 @@ const EmployeeList: React.FC = () => {
   };
 
   return (
-    <Loader loading={loading} label={loaderLabel}>
+    <Loader loading={loading}>
       {error ? (
         <>
           <h1>Employee list</h1>
@@ -44,7 +43,7 @@ const EmployeeList: React.FC = () => {
         <>
           <h1>Employee list</h1>
           {employees.map((employee) => (
-            <EmployeeListItem key={employee.id} employee={employee} updateList={() => {}} />
+            <EmployeeListItem key={employee.id} employee={employee} updateList={updateList} />
           ))}
           <AddEmployeeFormContainer updateList={updateList}/>          
         </>
