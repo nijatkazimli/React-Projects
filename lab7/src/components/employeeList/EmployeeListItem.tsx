@@ -6,10 +6,15 @@ export interface EmployeeListItemProps {
     updateList: () => void;
 }
 
-const EmployeeListItem: React.FC<EmployeeListItemProps> = (props: EmployeeListItemProps) => {
+const EmployeeListItem: React.FC<EmployeeListItemProps> = (props: EmployeeListItemProps) => { 
     return (
         <>
-            <p>{props.employee.name}</p>
+            <p>
+                <span>{props.employee.id}.</span>
+                <span> - </span>
+                <span>{props.employee.name}</span>
+                <button onClick={() => null}>Delete</button>                
+            </p>
         </>
     );
 }

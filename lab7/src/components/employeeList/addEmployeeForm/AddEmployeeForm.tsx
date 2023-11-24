@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import {Employee} from "../../../model/Employee";
+import { Employee } from "../../../model/Employee";
 import { generateKey } from '../../../utils/generateKey';
+import Loader from '../../utils/Loader';
+import { act } from 'react-dom/test-utils';
 
 export interface AddEmployeeFormProps {
     saveEmployee: (employee: Employee) => void;
@@ -8,23 +10,36 @@ export interface AddEmployeeFormProps {
 }
 
 const AddEmployeeForm: React.FC<AddEmployeeFormProps> = (props: AddEmployeeFormProps) => {
-    const [name, setName] = useState<string>('');
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setName(event.target.value);
+  const [name, setName] = useState<string>('');
+  const [isSaving, setIsSaving] = useState(false);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+  };
+
+  const handleSave = async () => {
+    const employee: Employee = {
+      id: generateKey(),
+      name: name,
+      isActive: true,
     };
-  
-    const handleSave = () => {
-        const employee: Employee = {
-          id: generateKey(),
-          name: name,
-          isActive: true,
-        };
-        props.saveEmployee(employee);
+
+    try {
+      setIsSaving(true);
+      await props.saveEmployee(employee);
+    } catch (error) {
+      console.error('Error saving employee:', error);
+    } finally {
+      act(() => {
+        setIsSaving(false);
         setName('');
-        props.hideForm();
-    };
-  
-    return (
+      })
+      props.hideForm();
+    }
+  };
+
+  return (
+    <Loader loading={isSaving} label='Saving'>
       <form>
         <label>
           Name:
@@ -37,7 +52,8 @@ const AddEmployeeForm: React.FC<AddEmployeeFormProps> = (props: AddEmployeeFormP
           Save
         </button>
       </form>
-    );
-  };
+    </Loader>
+  );
+};
 
 export default AddEmployeeForm;
