@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmployeeListItem snapshot tests EmployeeListItem should match the snapshot 1`] = `
+<div>
+  <p>
+    <span>
+      super-cool-id
+      .
+    </span>
+    <span>
+       - 
+    </span>
+    <span>
+      Bob Marley
+    </span>
+    <button>
+      Delete
+    </button>
+  </p>
+</div>
+`;

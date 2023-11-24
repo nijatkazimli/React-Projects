@@ -39,3 +39,10 @@ describe('EmployeeListItem test test', () => {
         expect(screen.queryByText('Bob Marley')).toBeNull();
     })
 })
+
+describe('EmployeeListItem snapshot tests', () => {
+    test('EmployeeListItem should match the snapshot', () => {
+        const { container } = render(<EmployeeListItem employee={employee} updateList={noop}/>);
+        expect(container).toMatchSnapshot();
+    })
+})
