@@ -1,4 +1,4 @@
-import {loadLikedProducts, toggleLiked} from "./actions";
+import {loadLikedProducts, toggleLiked} from "../redux/actions";
 
 const BASE_URL = 'http://localhost:3001';
 

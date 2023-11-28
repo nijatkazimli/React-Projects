@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { fetchLanguage as fetchLanguageApi, setLanguage as setLanguageApi } from "../redux/api";
+import { fetchLanguage as fetchLanguageApi, setLanguage as setLanguageApi } from "../logic/api";
 const languageStore = create((set) => ({
     language: "en-US",
     setLanguage: async (newLanguage) => {

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { toggleLiked, addToBasket } from "./redux/actions";
-import { saveLikedProduct, removeLikedProduct } from "./redux/api";
+import { saveLikedProduct, removeLikedProduct } from "./logic/api";
 
 const ProductListItem = ({ product }) => {
 	const likedProducts = useSelector((state) => state.likedProducts);

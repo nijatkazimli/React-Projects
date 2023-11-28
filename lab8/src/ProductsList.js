@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import ProductListItem from "./ProductListItem";
 import { useEffect } from "react";
-import {fetchLikedProducts} from "./redux/api";
+import {fetchLikedProducts} from "./logic/api";
 import languageStore from "./zustand/languageStore";
 
 const ProductsList = (props) => {

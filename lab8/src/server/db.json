@@ -2,5 +2,12 @@
   "language": {
     "value": "pl-PL"
   },
-  "liked": []
+  "liked": [
+    {
+      "id": 1
+    },
+    {
+      "id": 5
+    }
+  ]
 }
