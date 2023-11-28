@@ -7,8 +7,8 @@ const languageStore = create((set) => ({
         set({ language: newLanguage });
     },
     fetchLanguage: async () => {
-        const language = await fetchLanguageApi();
-        set({ language });
+        const fetchedLanguage = await fetchLanguageApi();
+        set({ language: fetchedLanguage });
     },
 }));
 
