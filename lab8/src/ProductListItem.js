@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { toggleLiked, addToBasket } from "./redux/actions";
+import { saveLikedProduct, removeLikedProduct } from "./redux/api";
 
 const ProductListItem = ({ product }) => {
 	const likedProducts = useSelector((state) => state.likedProducts);
@@ -12,11 +13,19 @@ const ProductListItem = ({ product }) => {
 		dispatch(addToBasket(productId));
 	};
 
+	const handleToggleLiked = (productId) => {
+		if (isLiked) {
+			dispatch(removeLikedProduct(productId));
+		} else {
+			dispatch(saveLikedProduct(productId));
+		}
+	};
+
 	return (
 		<li>
 			<span style={{ marginRight: 5 }}>{product.title}</span>
 			<span
-				onClick={() => dispatch(toggleLiked(product.id))}
+				onClick={() => handleToggleLiked(product.id)}
 				style={{ cursor: "pointer", marginRight: 5 }}
 			>
 				<i
