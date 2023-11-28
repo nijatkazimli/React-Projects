@@ -13,7 +13,6 @@ export const fetchLikedProducts = () => {
             })
             .then(data => {
                 const likedProductIds = data.map(x => x.id);
-                console.log(data);
                 dispatch(loadLikedProducts(likedProductIds));
             })
             .catch(error => {
