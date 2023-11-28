@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import LanguageContext from "./LanguageContext";
+import languageStore from "./zustand/languageStore";
 import { removeFromBasket, addToBasket } from "./redux/actions";
 
 const Basket = (props) => {
   const basketProducts = useSelector((state) => state.productsInBasket);
-  const { language } = useContext(LanguageContext);
+  const language = languageStore((state) => state.language);
   const productsData = useSelector((state) => state.products[language]);
 
   const basketText = {

@@ -3,14 +3,12 @@ import { Provider } from "react-redux";
 import Basket from "./Basket";
 import ProductsList from "./ProductsList";
 import LanguagePicker from "./LanguagePicker";
-import LanguageProvider from "./LanguageProvider";
 import store from "./redux/store";
 
 const App = () => {
 	const [view, setView] = useState("products");
 
 	return (
-		<LanguageProvider>
 			<Provider store={store}>
 				<div className="container">
 					<LanguagePicker />
@@ -36,7 +34,6 @@ const App = () => {
 					{view === "products" ? <ProductsList /> : <Basket />}
 				</div>
 			</Provider>
-		</LanguageProvider>
 	);
 };
 

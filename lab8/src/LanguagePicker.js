@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import LanguageContext from "./LanguageContext";
+import languageStore from "./zustand/languageStore"
 
 const LanguagePicker = (props) => {
-	const { setLanguage } = useContext(LanguageContext);
+	const setLanguage = languageStore((state) => state.setLanguage);
 
 	return (
 		<div className="field">
