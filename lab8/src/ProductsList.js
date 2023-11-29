@@ -1,9 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import ProductListItem from "./ProductListItem";
 import { useEffect } from "react";
-import {fetchLikedProducts} from "./logic/api";
+import { fetchLikedProducts, fetchBasket } from "./logic/api";
 import languageStore from "./zustand/languageStore";
-
 const ProductsList = (props) => {
 	const dispatch = useDispatch();
 
@@ -12,6 +11,7 @@ const ProductsList = (props) => {
 
 	useEffect(() => {
 		dispatch(fetchLikedProducts());
+		dispatch(fetchBasket());
 	}, [dispatch]);
 
 	return (

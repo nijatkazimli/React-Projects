@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import languageStore from "./zustand/languageStore";
-import { removeFromBasket, addToBasket } from "./redux/actions";
+import { incrementProductInBasket, decrementProductInBasket } from "./logic/api";
 
 const Basket = (props) => {
   const basketProducts = useSelector((state) => state.productsInBasket);
@@ -18,11 +18,11 @@ const Basket = (props) => {
   const dispatch = useDispatch();
 
   const handleRemoveFromBasket = (productId) => {
-    dispatch(removeFromBasket(productId));
+    dispatch(decrementProductInBasket(productId));
   };
 
   const handleAddToBasket = (productId) => {
-    dispatch(addToBasket(productId));
+    dispatch(incrementProductInBasket(productId));
   };
 
   return (

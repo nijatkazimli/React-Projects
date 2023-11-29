@@ -1,13 +1,17 @@
 {
   "language": {
-    "value": "pl-PL"
+    "value": "en-US"
   },
   "liked": [
     {
       "id": 1
     },
     {
-      "id": 5
+      "id": 4
     }
-  ]
+  ],
+  "basket": {
+    "1": 2,
+    "4": 1
+  }
 }

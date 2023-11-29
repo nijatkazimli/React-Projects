@@ -1,4 +1,4 @@
-import { TOGGLE_LIKED, ADD_TO_BASKET, REMOVE_FROM_BASKET, LOAD_LIKED_PRODUCTS } from "./actions";
+import {TOGGLE_LIKED, ADD_TO_BASKET, REMOVE_FROM_BASKET, LOAD_LIKED_PRODUCTS, LOAD_BASKET} from "./actions";
 import productsData from "../data";
 
 const initialState = {
@@ -48,6 +48,14 @@ const rootReducer = (state = initialState, action) => {
 			return {
 				...state,
 				likedProducts: action.payload,
+			};
+		case LOAD_BASKET:
+			return {
+				...state,
+				productsInBasket: {
+					...state.productsInBasket,
+					...action.payload,
+				},
 			};
 		default:
 			return state;

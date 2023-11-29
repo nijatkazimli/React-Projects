@@ -1,4 +1,4 @@
-import {loadLikedProducts, toggleLiked} from "../redux/actions";
+import {addToBasket, loadBasket, loadLikedProducts, removeFromBasket, toggleLiked} from "../redux/actions";
 
 const BASE_URL = 'http://localhost:3001';
 
@@ -90,4 +90,87 @@ export const setLanguage = (newLanguage) => {
             console.error(`Error saving language: ${error.message}`);
             throw error;
         });
+};
+
+export const fetchBasket = () => {
+    return (dispatch) => {
+        fetch(`${BASE_URL}/basket`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                dispatch(loadBasket(data));
+            })
+            .catch(error => {
+                console.error("Error fetching basket:", error);
+            });
+    };
+};
+
+export const incrementProductInBasket = (productId) => {
+    return(dispatch, getState) => {
+        const currentState = getState();
+        const currentCount = currentState.productsInBasket[productId] || 0;
+
+        const updatedCount = currentCount + 1;
+        const payload = {
+                ...currentState.productsInBasket,
+                [productId]: updatedCount,
+        };
+
+        fetch(`${BASE_URL}/basket`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        })
+            .then((response) => {
+                if(!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                dispatch(addToBasket(productId));
+            })
+            .catch((error) => {
+                console.error("Error saving product in the basket:", error);
+            });
+    }
+};
+
+export const decrementProductInBasket = (productId) => {
+    return(dispatch, getState) => {
+        const currentState = getState();
+        const currentCount = currentState.productsInBasket[productId] || 0;
+
+        const updatedCount = currentCount - 1;
+
+        const payload = {
+            ...currentState.productsInBasket,
+            [productId]: updatedCount,
+        };
+
+        if (updatedCount === 0) {
+            delete payload[productId];
+        }
+
+        fetch(`${BASE_URL}/basket`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        })
+            .then((response) => {
+                if(!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                dispatch(removeFromBasket(productId));
+            })
+            .catch((error) => {
+                console.error("Error saving product in the basket:", error);
+            });
+    };
 };

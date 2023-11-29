@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { toggleLiked, addToBasket } from "./redux/actions";
-import { saveLikedProduct, removeLikedProduct } from "./logic/api";
+import { saveLikedProduct, removeLikedProduct, incrementProductInBasket } from "./logic/api";
 
 const ProductListItem = ({ product }) => {
 	const likedProducts = useSelector((state) => state.likedProducts);
@@ -10,7 +9,7 @@ const ProductListItem = ({ product }) => {
 	const quantityInBasket = addedProducts[product.id] || 0;	
 
 	const handleAddToBasket = (productId) => {
-		dispatch(addToBasket(productId));
+		dispatch(incrementProductInBasket(productId));
 	};
 
 	const handleToggleLiked = (productId) => {
