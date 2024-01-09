@@ -75,6 +75,9 @@ const CountryList = () => {
         placeholder="Search countries..."
         onChangeText={(text) => searchCountries(text)}
       />
+      <Text style={{ textAlign: 'center', marginVertical: 5 }}>
+        {countries.length} countries
+      </Text>
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
