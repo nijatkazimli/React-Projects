@@ -7,6 +7,7 @@ import {
   TextInput,
   ActivityIndicator,
   RefreshControl,
+  StyleSheet,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -66,10 +67,10 @@ const CountryList = () => {
 
   const navigation = useNavigation();
 
-  const renderCountry = ({ item }) => (
+  const renderCountry = ({ item, index }) => (
     <TouchableOpacity onPress={() => navigation.navigate('Details', { country: item })}>
-      <View>
-        <Text>{item.name.common}</Text>
+      <View style={styles.listItem}>
+        <Text style={styles.listItemText}>{`${index + 1}. ${item.name.common}`}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -79,21 +80,22 @@ const CountryList = () => {
   }, []);
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 10, padding: 10 }}
+        style={styles.input}
         placeholder="Search countries..."
         onChangeText={(text) => searchCountries(text)}
       />
-      <Text style={{ textAlign: 'center', marginVertical: 5 }}>
+      <Text style={styles.resultText}>
         {countries.length > 0
         ? `${countries.length} ${countries.length === 1 ? 'country' : 'countries'}`
         : 'No countries found'}
       </Text>
       {loading ? (
-        <ActivityIndicator size="large" color="#0000ff" />
+        <ActivityIndicator style={styles.loader} size="large" color="#0000ff" />
       ) : (
         <FlatList
+          style={styles.flatList}
           data={countries}
           keyExtractor={(item) => item.cca2}
           renderItem={renderCountry}
@@ -105,5 +107,42 @@ const CountryList = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: 'white',
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginVertical: 10,
+    padding: 10,
+    borderRadius: 5,
+  },
+  resultText: {
+    textAlign: 'center',
+    marginVertical: 5,
+    fontSize: 16,
+  },
+  loader: {
+    marginTop: 20,
+  },
+  flatList: {
+    flex: 1,
+    marginTop: 10,
+  },
+  listItem: {
+    backgroundColor: '#f2f2f2',
+    padding: 10,
+    marginBottom: 5,
+    borderRadius: 5,
+  },
+  listItemText: {
+    fontSize: 14,
+  },
+});
 
 export default CountryList;

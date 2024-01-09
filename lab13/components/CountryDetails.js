@@ -10,8 +10,8 @@ const CountryDetails = ({ route }) => {
         source={{ uri: `https://flagcdn.com/w80/${country.cca2.toLowerCase()}.png` }}
         style={styles.flag}
       />
-      <Text>{`Country: ${country.name.common}`}</Text>
-      <Text>{`Region: ${country.region}`}</Text>
+      <Text style={styles.detailText}>{`Country: ${country.name.common}`}</Text>
+      <Text style={styles.detailText}>{`Region: ${country.region}`}</Text>
     </View>
   );
 };
@@ -21,11 +21,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#fff',
   },
   flag: {
     width: 80,
     height: 50,
     marginBottom: 10,
+  },
+  detailText: {
+    fontSize: 18,
+    marginBottom: 8,
   },
 });
 
