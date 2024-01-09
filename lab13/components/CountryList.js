@@ -37,7 +37,11 @@ const CountryList = () => {
         setSearchQuery(query);
         const response = await fetch(`https://restcountries.com/v3.1/name/${query}`);
         const data = await response.json();
-        setCountries(data);
+        if (data.status !== 404) {
+          setCountries(data);
+        } else {
+          setCountries([]);
+        }
       } else if (query.length === 0) {
         fetchAllCountries();
         setSearchQuery('');
