@@ -19,7 +19,7 @@ const CountryList = () => {
   const navigation = useNavigation();
 
   const renderCountry = ({ item }) => (
-    <TouchableOpacity onPress={() => navigation.navigate('CountryDetails', { country: item })}>
+    <TouchableOpacity onPress={() => navigation.navigate('Details', { country: item })}>
       <View>
         <Text>{item.name.common}</Text>
       </View>
