@@ -6,12 +6,14 @@ import {
   TouchableOpacity,
   TextInput,
   ActivityIndicator,
+  RefreshControl,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const CountryList = () => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const fetchAllCountries = async () => {
     try {
@@ -32,11 +34,13 @@ const CountryList = () => {
     try {
       if (query.length >= 3) {
         setLoading(true);
+        setSearchQuery(query);
         const response = await fetch(`https://restcountries.com/v3.1/name/${query}`);
         const data = await response.json();
         setCountries(data);
       } else if (query.length === 0) {
         fetchAllCountries();
+        setSearchQuery('');
       }
     } catch (error) {
       console.error('Error searching countries:', error);
@@ -44,6 +48,10 @@ const CountryList = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const onRefresh = () => {
+    searchCountries(searchQuery);
   };
 
   const navigation = useNavigation();
@@ -70,7 +78,14 @@ const CountryList = () => {
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
-        <FlatList data={countries} keyExtractor={(item) => item.cca2} renderItem={renderCountry} />
+        <FlatList
+          data={countries}
+          keyExtractor={(item) => item.cca2}
+          renderItem={renderCountry}
+          refreshControl={
+            <RefreshControl refreshing={loading} onRefresh={onRefresh} />
+          }
+        />
       )}
     </View>
   );
