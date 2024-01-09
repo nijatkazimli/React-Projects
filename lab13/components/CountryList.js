@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const CountryList = () => {
   const [countries, setCountries] = useState([]);
@@ -15,10 +16,14 @@ const CountryList = () => {
       .catch(error => console.error('Error fetching countries:', error));
   }, []);
 
+  const navigation = useNavigation();
+
   const renderCountry = ({ item }) => (
-    <View>
-      <Text>{item.name.common}</Text>
-    </View>
+    <TouchableOpacity onPress={() => navigation.navigate('CountryDetails', { country: item })}>
+      <View>
+        <Text>{item.name.common}</Text>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
