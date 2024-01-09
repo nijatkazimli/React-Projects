@@ -86,7 +86,9 @@ const CountryList = () => {
         onChangeText={(text) => searchCountries(text)}
       />
       <Text style={{ textAlign: 'center', marginVertical: 5 }}>
-        {countries.length} countries
+        {countries.length > 0
+        ? `${countries.length} ${countries.length === 1 ? 'country' : 'countries'}`
+        : 'No countries found'}
       </Text>
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
