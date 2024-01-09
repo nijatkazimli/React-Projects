@@ -15,12 +15,17 @@ const CountryList = () => {
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const sortNames = (data) => {
+    data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+  }
+
   const fetchAllCountries = async () => {
     try {
       setLoading(true);
 
       const response = await fetch('https://restcountries.com/v3.1/all');
       const data = await response.json();
+      sortNames(data);
       setCountries(data);
     } catch (error) {
       console.error('Error fetching all countries:', error);
@@ -38,6 +43,7 @@ const CountryList = () => {
         const response = await fetch(`https://restcountries.com/v3.1/name/${query}`);
         const data = await response.json();
         if (data.status !== 404) {
+          sortNames(data);
           setCountries(data);
         } else {
           setCountries([]);
