@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  arrays-and-objects:
+    image: nijatkazimli/react-projects:arrays-and-objects
+    ports:
+      - "3001:3000"
+
+  components:
+    image: nijatkazimli/react-projects:components
+    ports:
+      - "3002:3000"

@@ -49,7 +49,7 @@ jest.mock("./EmployeeListItem", () => {
     return function EmployeeListItem(props: EmployeeListItemProps) {
         return (
             <div>
-                Mocked employee: {props.employee.id}. <span>{props.employee.name}</span>
+                <>Mocked employee: {props.employee.id}. <span>{props.employee.name}</span></>
             </div>
         );
     };

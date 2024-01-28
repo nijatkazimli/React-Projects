@@ -25,7 +25,7 @@ const EmployeeListItem: React.FC<EmployeeListItemProps> = (props: EmployeeListIt
     return (
         <Loader loading={isDeleting} label='Deleting'>
             <p>
-                <span>{props.employee.id}.</span>
+                <span><>{props.employee.id}.</></span>
                 <span> - </span>
                 <span>{props.employee.name}</span>
                 <button onClick={handleDelete}>Delete</button>                

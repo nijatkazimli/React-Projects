@@ -12,9 +12,6 @@ Get ready for a thrilling ride through the React cosmos. In this course, I'll ma
 - 💥 Blasting off with state management using Redux.
 - and much more...
 
-## 🌟 What's In Store
-
-Expect some epic battles with bugs, but don't worry, we've got a debugging sword ready! Our Jedi masters (***Paweł Gawędzki, Krzysztof Łapiński, Michał Klecha, Łukasz Magiera***) are here to guide me on my quest to become a React wizard.
 
 ## 👨‍💻 My Mission
 
